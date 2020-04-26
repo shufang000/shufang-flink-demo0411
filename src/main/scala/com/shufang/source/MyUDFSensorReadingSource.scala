@@ -4,11 +4,10 @@ import com.shufang.entities.SensorReading
 import org.apache.flink.configuration.Configuration
 import org.apache.flink.streaming.api.functions.source.{RichSourceFunction, SourceFunction}
 
-import scala.collection.immutable
-import scala.util.Random
 
 class MyUDFSensorReadingSource extends RichSourceFunction[SensorReading] {
 
+  import scala.util.Random
   //自定义一个随机变量
   var random: Random = _
   var flag: Boolean = _
@@ -33,8 +32,8 @@ class MyUDFSensorReadingSource extends RichSourceFunction[SensorReading] {
     while (flag) {
       //1001,sensorreading01,1587778791011,34.1
       val name: String = names(math.abs(random.nextInt(names.size)))
-      val id: Int = 1000+math.abs(random.nextInt(1000))
-      val timestamp: Long = System.currentTimeMillis()
+      val id: Int = 1000+math.abs(random.nextInt(2))
+      val timestamp: Long = System.currentTimeMillis()-10000
       val temperture: Double = 36.0 + random.nextGaussian()
 
       val reading: SensorReading = SensorReading(id, name, timestamp, temperture)

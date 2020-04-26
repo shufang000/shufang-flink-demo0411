@@ -23,9 +23,6 @@ object WindowOperDemo {
 
     windowStream.sum(1).print()
 
-
-
-
     env.execute("window")
   }
 }
