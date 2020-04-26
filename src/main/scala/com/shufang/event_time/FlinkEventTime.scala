@@ -14,6 +14,9 @@ object FlinkEventTime {
     env.setParallelism(2)
     env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)
 
+    //env.getConfig.setAutoWatermarkInterval(5000)//每5s产生一个watermark
+
+
     //checkpoint的相关配置
     env.enableCheckpointing(1000) //每秒checkpoint一次
     env.getCheckpointConfig.setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE) //checkpoint的类型
