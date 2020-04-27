@@ -43,7 +43,6 @@ class MyUDFSensorReadingSource extends RichSourceFunction[SensorReading] {
       Thread.sleep(2000)
     }
 
-
   }
 
   override def cancel(): Unit = {
