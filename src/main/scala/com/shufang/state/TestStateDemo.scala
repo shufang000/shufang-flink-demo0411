@@ -17,7 +17,7 @@ import org.apache.flink.util.Collector
  * 二：OperatorState: 可以用在所有的算子中（FlinkKafkaConsumer就是典型的OperatorState）
  *
  * 下面来显示以下2种状态的区别：-----------------------------------------------------------------------
- *      ManagedKeyedState                                  ｜ OperatorState
+ *      ManagedKeyedState                                  ｜ ManagedOperatorState
  *      通过重写RichFunction，getRuntimeContext来创建获取状态 ｜同时实现CheckpointedFunction
  *      每个算子的子任务可以处理多个key的状态，每个key对应       ｜一个算子的一个子任务共享一份状态
  *      一个状态                                             ｜

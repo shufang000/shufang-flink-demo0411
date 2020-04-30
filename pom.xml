@@ -14,8 +14,6 @@
     </properties>
 
 
-
-
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-streaming-scala -->
         <dependency>
@@ -29,7 +27,7 @@
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-statebackend-rocksdb_2.11</artifactId>
             <version>1.7.2</version>
-<!--            <scope>test</scope>-->
+            <!--            <scope>test</scope>-->
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.bahir/flink-connector-redis -->
@@ -75,6 +73,14 @@
             <version>1.2.17</version>
         </dependency>
 
+        <!--添加tableAPI依赖，API、SQLAPI目前都不支持所有的DataStream、DataSet功能，但是在集成、性能方案都有优化-->
+        <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-table -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table_2.11</artifactId>
+            <version>1.7.2</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
 
     </dependencies>
 

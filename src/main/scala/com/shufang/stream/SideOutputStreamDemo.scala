@@ -21,10 +21,11 @@ object SideOutputStreamDemo {
 
     val function = new MyProcessFunction
     val outputflag: OutputTag[String] = function.outputflag
-    val mainStream: DataStream[String] = ds.process(function)
 
+    val mainStream: DataStream[String] = ds.process(function) //主流
     mainStream.print("正常体温->")
-    val outputStream: DataStream[String] = mainStream.getSideOutput(outputflag)
+
+    val outputStream: DataStream[String] = mainStream.getSideOutput(outputflag) //侧输出流
     outputStream.print("过高体温->")
 
 
