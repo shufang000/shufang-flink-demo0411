@@ -29,6 +29,7 @@ object CheckPointDemo {
      * --------------------------------------checkpoint的配置-----------------------------------------------
      */
     env.enableCheckpointing(1000) //每1s checkpoint 一次
+
     env.getCheckpointConfig.setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE) //默认是EXACTLY_ONCE
     env.getCheckpointConfig.setCheckpointInterval(1000) //每隔 1s进行一次checkpoint 的工作
     env.getCheckpointConfig.setCheckpointTimeout(6000) //如果checkpoint操作在6s之内没有完成，那么就discard终端该checkpoint操作

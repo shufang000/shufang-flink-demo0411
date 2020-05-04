@@ -56,9 +56,8 @@ object FlinkTableAPIDemo {
 
 
 
-    streamEnv.
 
 
-    streamTableEnv.execute("table-api")
+    streamEnv.execute("table-api")
   }
 }
