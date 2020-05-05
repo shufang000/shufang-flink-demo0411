@@ -33,12 +33,16 @@ object UDFSerializerRegisterDemo {
     //给一个类型添加默认的Kryo序列化方式
     env.getConfig.registerTypeWithKryoSerializer(classOf[SensorReading],classOf[KryoSerializableSerializer])
 
-    //添加外部序列化系统
-    // Apache Thrift
+    //TODO 添加外部序列化系统
+    //Apache Thrift
     env.getConfig.registerTypeWithKryoSerializer(classOf[SensorReading],classOf[TBaseSerializer])
-
-    // Google ProtoBuf
+    //Google ProtoBuf
     env.getConfig.registerTypeWithKryoSerializer(classOf[SensorReading],classOf[ProtobufSerializer])
+
+
+    //常规优化：用自定义类POJO代替TupleX
+
+
 
   }
 }

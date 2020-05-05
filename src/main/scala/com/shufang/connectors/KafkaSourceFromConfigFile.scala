@@ -12,6 +12,13 @@ object KafkaSourceFromConfigFile {
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
 
     //将所有的配置信息都写进文件
+    /**
+     * bootstrap.servers=localhost:9092
+     * group.id=linkConsumer
+     * key.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+     * value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+     * topic=flink_topic
+     */
     val kafkaConfig = new Properties()
     kafkaConfig.load(this.getClass.getClassLoader.getResourceAsStream("kafka_consumer.properties"))
 
@@ -26,6 +33,9 @@ object KafkaSourceFromConfigFile {
     )
     //从每个分区的最开始开始读取
     kafkaConsumer.setStartFromEarliest()
+
+    //保证高可用
+    kafkaConsumer.setCommitOffsetsOnCheckpoints(true)
 
     //创建sourceStream并打印
     env.addSource(kafkaConsumer).print()
